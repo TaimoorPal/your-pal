@@ -1,0 +1,112 @@
+{
+  "name": "your-pal",
+  "displayName": "Your Pal",
+  "description": "Your QA companion inside VS Code. Explains Selenium and Playwright errors in plain English using MiniMax AI. Shows 3 fixes + the Playwright equivalent when you're using Selenium.",
+  "version": "1.0.0",
+  "publisher": "TaimoorPal",
+  "icon": "media/icon.png",
+  "engines": { "vscode": "^1.85.0" },
+  "categories": ["Other", "Testing"],
+  "keywords": ["qa", "selenium", "playwright", "testing", "automation", "debug", "minimax", "ai"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TaimoorPal/your-pal"
+  },
+  "activationEvents": [
+    "onCommand:qaExplainer.explain",
+    "onCommand:qaExplainer.explainSelected",
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "qaExplainer.explain",
+        "title": "🔍 Explain QA Error",
+        "category": "QA Explainer"
+      },
+      {
+        "command": "qaExplainer.explainSelected",
+        "title": "🔍 Explain Selected Error",
+        "category": "QA Explainer"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "qaExplainer.explain",
+        "key": "ctrl+shift+e",
+        "mac": "cmd+shift+e",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "qaExplainer.explainSelected",
+          "when": "editorHasSelection",
+          "group": "navigation@1"
+        }
+      ],
+      "terminal/context": [
+        {
+          "command": "qaExplainer.explainSelected",
+          "group": "navigation@1"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "qaExplainer",
+          "title": "QA Explainer",
+          "icon": "media/sidebar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "qaExplainer": [
+        {
+          "type": "webview",
+          "id": "qaExplainerPanel",
+          "name": "Error Explainer"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "QA Stack Trace Explainer",
+      "properties": {
+        "qaExplainer.minimaxApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your MiniMax API key. Get one at platform.minimax.io",
+          "markdownDescription": "Your MiniMax API key. Get one at [platform.minimax.io](https://platform.minimax.io)"
+        },
+        "qaExplainer.minimaxHost": {
+          "type": "string",
+          "default": "https://api.minimaxi.chat",
+          "enum": [
+            "https://api.minimaxi.chat",
+            "https://api.minimax.io"
+          ],
+          "description": "MiniMax API host. Use minimaxi.chat for global, minimax.io for China region."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}

@@ -1,0 +1,6 @@
+# VS Code workspace and build artifacts
+node_modules/
+out/
+*.vsix
+.env
+**/.vscode/
