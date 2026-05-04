@@ -4,6 +4,9 @@ Your QA companion inside VS Code. Explains Selenium and Playwright errors in pla
 
 Built by **Taimoor Ahmed Pal** — Senior Automation Engineer, ISTQB CTFL Certified.
 
+<img width="1881" height="1270" alt="Recording 2026-05-04 at 19 22 20" src="https://github.com/user-attachments/assets/c1429e5c-614d-433c-8900-22820ffa811d" />
+
+
 ## What it does
 
 You hit a `NoSuchElementException` or `locator.click: Timeout` in your test. Instead of spending 30 minutes on Google, you press `Cmd+Shift+E` (or right-click → Explain QA Error) and within 2 seconds the sidebar shows:
